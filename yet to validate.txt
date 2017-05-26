@@ -1,0 +1,31 @@
+root@rack1-ctrl1:/data1/opensaf# vim.tiny hlinuxvm_restore.sh
+#!/bin/bash
+
+BKP_DIR=/data1/opensaf/backup
+VM_NAME=hlinuxvmkvm
+CLUSTER_PATH=/data1/opensaf
+sleep 40s
+ls $BKP_DIR |grep NFVSYS_VALUEADD.qcow2
+if [ "$?" == 0 ]; then
+   kvmha -d $VM_NAME -c shutdown
+   echo 'please wait it takes sometime to Restore HLINUX VM'
+   md5sum $BKP_DIR/NFVSYS_VALUEADD.qcow2>>$BKP_DIR/NFVSYS_VALUEADD.qcow2.md5
+   VAl1=`cat $BKP_DIR/NFVSYS_VALUEADD.qcow2.md5 |awk '{print $1}'`
+   mv $CLUSTER_PATH/NFVSYS_VALUEADD.qcow2 /tmp
+   if [ $? != 0 ]; then
+      echo "commit not happened properly"
+      exit
+   fi
+   cp $BKP_DIR/NFVSYS_VALUEADD.qcow2 $CLUSTER_PATH
+   md5sum $CLUSTER_PATH/NFVSYS_VALUEADD.qcow2>>$CLUSTER_PATH/NFVSYS_VALUEADD.qcow2.md5
+   VAl2=`cat $CLUSTER_PATH/NFVSYS_VALUEADD.qcow2.md5 |awk '{print $1}'`
+   if [ $VAL1 != $VAL2 ]; then
+      echo "Qcow2 is corrupted. Please replace it again"
+      exit
+   fi
+   sleep 5s
+   kvmha -d $VM_NAME -c start
+   echo 'Restore is successful'
+else
+   echo 'There is no Backup. Please take the backup and then restore '
+fi

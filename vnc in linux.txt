@@ -1,0 +1,4 @@
+552  vncserver
+  553  vnc4server
+  554  vnc4passwd
+  555  netstat  -ntpa|grep -i vnc

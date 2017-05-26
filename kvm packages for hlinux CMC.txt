@@ -1,0 +1,7 @@
+ qemu-kvm
+           - libvirt-bin
+           - bridge-utils
+           - qemu
+           - libcap2-bin
+           - virtinst
+           - ifenslave 

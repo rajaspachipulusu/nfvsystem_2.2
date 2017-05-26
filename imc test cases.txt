@@ -1,0 +1,13 @@
+IMC High leval test cases
+
+1. verify whether IMC is deployed successfully
+2. verify whether IMC is adding 5920 switches
+3. verify whether IMC is adding 5930 switches
+4. verify whether IMC is adding 6125 switches
+5. verify whether Switch is communicating with IMC gui
+6. verify whether IMC is able to add SNMP alerts for Switches
+7. update IMC VM variables
+8. Configure 5920 switches is happenning through IMC
+9. Configure 5930 switches is happenning through IMC
+10.Configure 6125 switches is happenning through IMC
+11.verify IRF after adding Switches

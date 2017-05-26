@@ -1,0 +1,35 @@
+import os,sys,time,pdb
+import csv,json
+import logging
+from datetime import datetime
+file_name = datetime.now().strftime('hpe_nfvsys_cmc_postcheck_%d-%m-%Y.log')
+
+logFile = "/var/hpe_nfvsystem/logs/"+file_name
+logging.basicConfig(filename = logFile, filemode = 'w', level = logging.DEBUG, format = '%(asctime)s - %(levelname)s: %(message)s', datefmt = '%m/%d/%Y%I:%M:%S %p')
+
+
+from cplm_lib.cplm_common.cplm_schema_env_vars import CPLM_topfolder_abspath, CPLM_common_path
+
+basefile = json.load(open(CPLM_common_path+'/schema/nsds/base/component_initial_config/hpe_nfvsys_cmc_kvm.json'))
+
+def cmc_check():
+    fc=0
+    try:
+        final_status = ""
+        ip = basefile['cmc_internal_management_ip']
+        status = os.system("ping -c 3 " + str(ip))
+        logging.info ("Status of cmc is :"+str(status))
+        if (status != 0):
+            final_status = "failed"
+            time.sleep(5)
+            check=1
+        if final_status:
+            pass
+            logging.info ("postcheck is failed")
+        else:
+            pass
+            logging.info ("postcheck is successfull for CMC")
+    except Exception as err:
+         logging.info("Exception at cmc IP Ping:"+str(err))
+
+cmc_check()

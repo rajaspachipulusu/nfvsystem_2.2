@@ -1,0 +1,11 @@
+docker trouble shooting steps
+
+1. if docker demon is not responding then run 
+docker -d 
+
+open other terminal and give docker info it will start responding
+
+root@ubuntu:~# docker info
+An error occurred trying to connect: Get http:///var/run/docker.sock/v1.21/info: EOF
+root@ubuntu:~#  rm /var/lib/docker/network/files/local-kv.db
+root@ubuntu:~# service docker start

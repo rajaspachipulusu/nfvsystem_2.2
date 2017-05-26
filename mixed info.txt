@@ -1,0 +1,56 @@
+imc elements detections + automation
+cmc multinic
+IMC multi nic
+esxi host to assign to IMC CMC in vcenter
+ 
+
+16.79.29.150
+16.79.29.251
+16.79.29.241
+16.79.29.212   HP 6125XLG Blade Switch
+
+add admin user
+add switches
+
+user>
+ <id>1</id>
+ <userName>zhangsan</userName>
+ <certification>zhangsan001</certification>
+ <address>Bejing</address>
+ <phone>01088101023</phone>
+ <email>zhangsan@h3c.com</email>
+ <ssType>2</ssType>
+</user>
+
+35GXN-8YMPV-MH62N-8XKV7-QHTC6
+
+
+
+switch ip user name password,router ip username password, system view password
+if its auto discovery then we need network segments,
+operator name with roles
+before adding switch we should ask for type of snmp version and user name password of switch
+we can import devices using nnmi so we should ask for server port
+
+telnet ip port
+lsof -i :8080
+iptables -nL will give iptable content
+
+
+switch info
+[S9500A] snmp-agent community write  private
+[S9500A] snmp-agent community read  public
+[S9500A] snmp-agent sys-info version all
+
+
+
+
+
+os.system("ssh admin@"+json_data['hp_nfvsys_sv_ip']+" -p 16022 creategroup groupname= "+json_data['hp_nfvsys_group_name']+" node="+json_data['hp_nfvsys_group_node']+" username="+json_data['hp_nfvsys_group_username']+" password="+json_data['hp_nfvsys_group_password'])
+
+
+
+once post check is successful wwe will have to copy all config files to /etc/sysconfig
+
+
+vmfs/devices/disks/naa.6000eba

@@ -1,0 +1,24 @@
+ cat /etc/keystone/keystone.conf
+   35  cat /etc/keystone/keystone.conf  | grep service
+   36  cat /etc/keystone/keystone.conf  | grep token
+   37  cat /etc/keystone/keystone.conf  | grep -v '#'
+   38  grep admin_token /etc/keystone/keystone.conf
+virsh snapshot-create-as imc --no-metadata snap1 "backup snap" --disk-only --atomic --diskspec vda,snapshot=external,file=/snaps/oneviewtst.qcow.snap1
+
+
+IMAGE=`virsh domblklist imckvm | grep hda | awk '{print $NF}'`
+# virsh snapshot-create-as imckvm --no-metadata snap1 "backup snap" --disk-only --atomic --diskspec hda,snapshot=external,file=/snaps/nfv.qcow2
+# rsync -azv --progress --inplace ${IMAGE} <destination>
+# virsh blockcommit imckvm hda 0 --wait --active
+# virsh blockjob imckvm hda --pivot
+# rm -f /snaps/nfv.qcow2
+
+
+
+
+
+kvmha -d imckvm -c status |grep ACTIVE |awk '{print $1}'
+
+kvmha -d imckvm -c status |grep SU3 |grep "host:"|awk '{print $6}'
+
+sudo chown -R nfvadmin ~nfvadmin/cplm_imc/

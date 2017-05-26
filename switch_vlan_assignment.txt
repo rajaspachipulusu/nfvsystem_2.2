@@ -1,0 +1,24 @@
+vlan 40 // creates vlan
+
+int vlan 40 // goes to that vlan interface
+
+ip add 10.207.40.1 255.255.255.0 // assignes ip to that vlan
+
+quit
+
+
+// assigning vlan to port (tagged )
+
+interface ten 1/0/15
+port link-type trunk  //for tagged vlan assignment 
+port trunk permit vlan 30 31 32 34
+
+
+// assigning vlan to port (untagged )
+
+interface ten 1/0/15
+port access vlan 40
+
+//to porvide description 
+int ten 1/0/10
+desc VSA-01-DATA1 //porvides description

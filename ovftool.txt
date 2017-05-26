@@ -1,0 +1,30 @@
+os.system('ovftool --disableVerification --noSSLVerify --acceptAllEulas --ipAllocationPolicy=fixedPolicy \
+          --prop:%s.gateway.%s=%s  --prop:%s.ip0.%s=%s --prop:%s.netmask0.%s=%s --datastore=%s  --powerOn --name=%s %s vi://%s:%s@%s/%s/host/%s'\
+            % ( json_data['IMC_gateway_ip_address_internal'],json_data['IMC_vm_image_classid'],\
+            json_data['IMC_vm_image_instanceid'],json_data['IMC_network_mgmt_internal_IP'],json_data['IMC_vm_image_classid'],json_data['IMC_vm_image_instanceid'],\
+            json_data['IMC_subnet_mask_internal'],json_data['IMC_vm_data_store_name'], json_data['IMC_vm_host_name'],json_data['IMC_vm_ovf_file_path'],\
+            json_data['IMC_vcenter_user_name'],json_data['IMC_vcenter_password'], json_data['IMC_vcenter_ip'],json_data['IMC_esxi_datacenter_name'],json_data['IMC_vcenter_cluster']))
+
+
+
+ovftool --disableVerification --noSSLVerify --acceptAllEulas --ipAllocationPolicy=fixedPolicy \
+          --prop:%s.gateway.HP-IMC=%s  --prop:%s.ip0.%s=%s --prop:%s.netmask0.%s=%s --datastore=%s  --powerOn --name=%s %s vi://%s:%s@%s/%s/host/%s'\
+            % ( {{ IMC_vm_image_classid }}, {{IMC_vm_image_instanceid }}, {{IMC_gateway_ip_address_internal}}, {{IMC_vm_image_classid}},\
+            {{IMC_vm_image_instanceid}},{{IMC_network_mgmt_internal_IP}},{{IMC_vm_image_classid}},{{IMC_vm_image_instanceid}},\
+            {{IMC_subnet_mask_internal}},{{IMC_vm_data_store_name}}, {{IMC_vm_host_name}},{{IMC_vm_ovf_file_path}},\
+            {{IMC_vcenter_user_name}},{{IMC_vcenter_password}}, {{IMC_vcenter_ip}},{{IMC_esxi_datacenter_name}},{{IMC_vcenter_cluster}})
+
+
+ovftool --disableVerification --noSSLVerify --acceptAllEulas --ipAllocationPolicy=fixedPolicy --prop:vami.gateway.HP-IMC=10.206.230.1  --prop:vami.ip0.HP-IMC=10.206.230.30 --prop:vami.netmask0.HP-IMC=255.255.255.0 --datastore=datastore1 --powerOn --name=NFVSYS-IMCVM-005 /depot/hp_nfvsystems_1_0/hp_nfvcp_1_0/hp_imc_7_1/product/IMC-FINAL.ovf vi://root:vmware@10.206.230.16/NewDatacenter/host/cluster
+            
+
+
+
+
+
+
+ovftool --disableVerification --noSSLVerify --acceptAllEulas --ipAllocationPolicy=fixedPolicy --prop:vami.gateway.HP-IMC=IMC_gateway_ip_address_internal  --prop:vami.ip0.HP-IMC=IMC_network_mgmt_internal_IP --prop:vami.netmask0.HP-IMC=IMC_subnet_mask_internal --datastore=IMC_vm_data_store_name --powerOn --name=IMC_vm_host_name IMC_vm_ovf_file_path vi://IMC_vcenter_user_name:IMC_vcenter_password@IMC_vcenter_ip/IMC_esxi_datacenter_name/host/IMC_vcenter_cluster
+
+
+
+ovftool --disableVerification --noSSLVerify --acceptAllEulas --ipAllocationPolicy=fixedPolicy --prop:vami.gateway.HP-IMC=10.206.230.1  --prop:vami.ip0.HP-IMC=10.206.230.30 --prop:vami.netmask0.HP-IMC=255.255.255.0 --datastore=datastore1 --powerOn --name=NFVSYS-IMCVM-005 /depot/hp_nfvsystems_1_0/hp_nfvcp_1_0/hp_imc_7_1/product/IMC-FINAL.ovf vi://root:vmware@10.206.230.16/NewDatacenter/host/cluster

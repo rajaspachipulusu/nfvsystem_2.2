@@ -1,0 +1,69 @@
+StEPS to BRING UP SEEDVM AND CONFIGURATION
+##########################################
+
+Login to the seedhost with nfvadmin user and perform the following 
+
+1. Copy the NFV Seed VM image (.qcow2), the script nfvsys_seedhost_prereq.sh and the debian 'nfv-seedvm-netconfig' from nfvbits server to the following location of the Seed Host
+
+    /home/nfvadmin
+
+The locations are as follows on nfvbits
+
+/var/www/build/nfvsystem/17.03/images/seedqcow2/NFVSYS-NFVSEEDVM-001.qcow2
+/data/nfvbits/nfvsystem/17.03/Integration/Jan03/nfv-seedvm-netconfig_17.03.0-4_amd64.deb
+/var/www/build/nfvsystem/17.03/images/scripts/nfvsys_seedhost_prereq.sh
+
+
+
+2) Copy the NFV Seed VM image (.qcow2 ) to  /var/lib/libvirt/images   from /home/nfvadmin
+
+
+   sudo cp NFVSYS-NFVSEEDVM-001.qcow2  /var/lib/libvirt/images/
+
+
+3) Run the script as below to deploy the seedvm 
+
+
+   sudo sh nfvsys_seedhost_prereq.sh
+
+
+The script brings up the seedvm and the private IP address is assigned to the seedvm and the IP address is displayed at the end of the script output.
+
+
+4) scp 'nfv-seedvm-netconfig' the debian copied  to the seedvm from seedhost.
+
+
+scp nfv-seedvm-netconfig  nfvadmin@<private IP ADDRESS of the seedvm>:
+
+
+5) ssh to the seedvm with nfvadmin user and the credentials are available in the CID
+
+
+6) Install the debian on the seedvm
+
+
+   sudo dpkg -i nfv-seedvm-netconfig.....deb
+
+
+ 
+Ensure json files are created in the appropriate location before proceeding further.
+
+7) Go to the folder  /depot/hpe_nfvsystem/common/tools/scripts/nfvseedhost/nfvseedhost_rh/
+
+
+cd /depot/hpe_nfvsystem/common/tools/scripts/nfvseedhost/nfvseedhost_rh/
+
+Then run the playbook using the below command.
+
+ansible-playbook hpe_nfvsys_seedhost_configure.yml
+
+Which will bring up the all the networks like br-nfv-pxe, br-bls, br-oam, br-ncp  on the seedhost. However the gateways of these networks are not pingable at this stage. These networks are reachable once the switch automation is completed.
+
+8) Go the folder /depot/hpe_nfvsystem/common/tools/scripts/nfvseedhost/nfvseedvm_rh/
+
+cd /depot/hpe_nfvsystem/common/tools/scripts/nfvseedhost/nfvseedvm_rh/
+
+ansible-playbook hpe_nfvsystem_seedvm_config.yml
+
+9) Proceed for the switch automation.
+

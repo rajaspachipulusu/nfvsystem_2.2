@@ -1,0 +1,333 @@
+
+
+
+5920   STP config
+
+
+<nfvsys-ske-5920>dis link-aggregation summ
+Aggregation Interface Type:
+BAGG -- Bridge-Aggregation, BLAGG -- Blade-Aggregation, RAGG -- Route-Aggregation
+Aggregation Mode: S -- Static, D -- Dynamic
+Loadsharing Type: Shar -- Loadsharing, NonS -- Non-Loadsharing
+Actor System ID: 0x8000, 2c23-3a5b-61c5
+
+AGG        AGG   Partner ID              Selected  Unselected  Individual  Share
+Interface  Mode                          Ports     Ports       Ports       Type
+--------------------------------------------------------------------------------
+BAGG1      D     0x1   , 5820-b1d2-2861  2         0           0           Shar
+BAGG2      D     0x1   , 5820-b1d2-083d  2         0           0           Shar
+BAGG3      D     0x1   , 5820-b1d2-38f1  2         0           0           Shar
+BAGG4      D     0x1   , 5820-b1d2-289d  2         0           0           Shar
+BAGG5      D     0x1   , 5820-b1d2-2861  2         0           0           Shar
+BAGG6      D     0x1   , 5820-b1d2-083d  2         0           0           Shar
+BAGG7      D     0x1   , 5820-b1d2-38f1  2         0           0           Shar
+BAGG8      D     0x1   , 5820-b1d2-289d  2         0           0           Shar
+BAGG9      D     0x8000, 0000-0000-0000  1         1           0           Shar
+BAGG10     D     0x8000, 0000-0000-0000  1         1           0           Shar
+BAGG50     D     0x8000, 0000-0000-0000  0         2           0           Shar
+
+[nfvsys-ske-5920]int br 50
+[nfvsys-ske-5920-Bridge-Aggregation50]dis this
+#
+interface Bridge-Aggregation50
+description SKE-5920-Customer-Net
+port link-type trunk
+undo port trunk permit vlan 1
+port trunk permit vlan 144 2555
+link-aggregation mode dynamic
+#
+return
+[nfvsys-ske-5920-Bridge-Aggregation50]dis stp
+-------[CIST Global Info][Mode RSTP]-------
+Bridge ID           : 4096.2c23-3a5b-61c5
+Bridge times        : Hello 2s MaxAge 20s FwdDelay 15s MaxHops 20
+Root ID/ERPC        : 4096.2c23-3a5b-61c5, 0
+RegRoot ID/IRPC     : 4096.2c23-3a5b-61c5, 0
+RootPort ID         : 0.0
+BPDU-Protection     : Disabled
+Bridge Config-
+Digest-Snooping     : Disabled
+TC or TCN received  : 50
+Time since last TC  : 0 days 19h:22m:41s
+
+----[Port16899(Bridge-Aggregation1)][FORWARDING]----
+Port protocol       : Enabled
+Port role           : Designated Port (Boundary)
+Port ID             : 128.16899
+Port cost(Legacy)   : Config=auto, Active=1
+Desg.bridge/port    : 4096.2c23-3a5b-61c5, 128.515
+Port edged          : Config=disabled, Active=disabled
+Point-to-Point      : Config=auto, Active=true
+Transmit limit      : 10 packets/hello-time
+TC-Restriction      : Disabled
+Role-Restriction    : Disabled
+Protection type     : Config=none, Active=none
+MST BPDU format     : Config=auto, Active=802.1s
+Port Config-
+Digest-Snooping     : Disabled
+Rapid transition    : False
+Num of VLANs mapped : 4
+Port times          : Hello 2s MaxAge 20s FwdDelay 15s MsgAge 0s RemHops 20
+BPDU sent           : 79875
+          TCN: 0, Config: 0, RST: 79875, MST: 0
+BPDU received       : 0
+          TCN: 0, Config: 0, RST: 0, MST: 0
+
+----[Port16900(Bridge-Aggregation2)][FORWARDING]----
+Port protocol       : Enabled
+Port role           : Designated Port (Boundary)
+Port ID             : 128.16900
+Port cost(Legacy)   : Config=auto, Active=1
+Desg.bridge/port    : 4096.2c23-3a5b-61c5, 128.516
+Port edged          : Config=disabled, Active=disabled
+Point-to-Point      : Config=auto, Active=true
+Transmit limit      : 10 packets/hello-time
+TC-Restriction      : Disabled
+Role-Restriction    : Disabled
+[nfvsys-ske-5920-Bridge-Aggregation50]dis stp brief
+MST ID   Port                                Role  STP State   Protection
+0        Bridge-Aggregation1                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation2                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation3                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation4                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation5                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation6                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation7                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation8                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation9                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation10                DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/2            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/7            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/8            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/9            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/10           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/12           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/13           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/14           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/15           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/16           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/17           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet1/0/18           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/2            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/7            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/8            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/9            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/12           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/13           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/14           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/15           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/16           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/17           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet2/0/18           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/2            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/7            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/8            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/9            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/10           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/12           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/13           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/14           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/15           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/16           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/17           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet3/0/18           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/7            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/8            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/9            DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/10           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/12           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/13           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/14           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/15           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/16           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/17           DESI  FORWARDING  NONE
+0        Ten-GigabitEthernet4/0/18           DESI  FORWARDING  NONE
+
+[nfvsys-ske-5920-Bridge-Aggregation50]int ten 1/0/1
+[nfvsys-ske-5920-Ten-GigabitEthernet1/0/1]dis this
+#
+interface Ten-GigabitEthernet1/0/1
+port link-mode bridge
+description SKE-5920-Customer-Net1
+port link-type trunk
+undo port trunk permit vlan 1
+port trunk permit vlan 144 2555
+port link-aggregation group 50
+#
+return
+[nfvsys-ske-5920-Ten-GigabitEthernet1/0/1]dis log
+[nfvsys-ske-5920-Ten-GigabitEthernet1/0/1]dis logfile
+[nfvsys-ske-5920-Ten-GigabitEthernet1/0/1]dis logbuffer rev
+[nfvsys-ske-5920-Ten-GigabitEthernet1/0/1]dis logbuffer reverse
+Log buffer: Enabled
+Max buffer size: 1024
+Actual buffer size: 512
+Dropped messages: 0
+Overwritten messages: 322
+Current messages: 512
+%Jan 29 10:39:05:543 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is dis this
+%Jan 29 10:39:03:956 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is int ten 1/0/1
+%Jan 29 10:38:21:505 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is dis stp brief
+%Jan 29 10:37:50:470 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is dis stp
+%Jan 29 10:37:39:487 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is dis this
+%Jan 29 10:37:37:391 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is int br 50
+%Jan 29 10:37:35:446 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is sys
+%Jan 29 10:37:33:742 2016 nfvsys-ske-5920 SHELL/4/SHELL_CMD_MATCHFAIL: -User=**-IPAddr=**; Command int br 50 in view shell failed to be matched.
+%Jan 29 10:37:30:744 2016 nfvsys-ske-5920 SHELL/4/SHELL_CMD_MATCHFAIL: -User=**-IPAddr=**; Command int br50  in view shell failed to be matched.
+%Jan 29 10:37:26:217 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is dis link-aggregation summ
+%Jan 29 10:37:13:716 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is dis int brief
+%Jan 29 10:37:04:697 2016 nfvsys-ske-5920 SHELL/5/SHELL_LOGIN: TTY logged in from aux0.
+%Jan 29 10:34:43:804 2016 nfvsys-ske-5920 IFNET/5/LINK_UPDOWN: Line protocol on the interface M-GigabitEthernet0/0/0 is up.
+%Jan 29 10:34:43:802 2016 nfvsys-ske-5920 IFNET/3/PHY_UPDOWN: M-GigabitEthernet0/0/0 link status is up.
+%Jan 28 19:25:38:845 2016 nfvsys-ske-5920 LLDP/5/LLDP_NEIGHBOR_AGE_OUT: -Slot=2; Nearest bridge agent neighbor aged out on Port Ten-GigabitEthernet2/0/1 (IfIndex 131), Chassis ID is bcea-fa12-79f0, Port ID is Ten-GigabitEthernet2/0/17.
+
+%Jan 28 19:25:26:894 2016 nfvsys-ske-5920 LLDP/5/LLDP_NEIGHBOR_AGE_OUT: Nearest bridge agent neighbor aged out on Port Ten-GigabitEthernet1/0/1 (IfIndex 1), Chassis ID is bcea-fa12-79f0, Port ID is Ten-GigabitEthernet1/0/17.
+
+%Jan 28 19:23:47:716 2016 nfvsys-ske-5920 IFNET/3/PHY_UPDOWN: Ten-GigabitEthernet2/0/1 link status is down.
+%Jan 28 19:23:47:706 2016 nfvsys-ske-5920 IFNET/5/LINK_UPDOWN: Line protocol on the interface Ten-GigabitEthernet2/0/1 is down.
+%Jan 28 19:23:47:705 2016 nfvsys-ske-5920 IFNET/5/LINK_UPDOWN: Line protocol on the interface Bridge-Aggregation50 is down.
+%Jan 28 19:23:47:701 2016 nfvsys-ske-5920 IFNET/3/PHY_UPDOWN: Bridge-Aggregation50 link status is down.
+%Jan 28 19:23:47:674 2016 nfvsys-ske-5920 LAGG/6/LAGG_INACTIVE_PHYSTATE: Member port XGE2/0/1 of aggregation group BAGG50 changed to the inactive state, because the physical state of the port is down.
+%Jan 28 19:23:33:941 2016 nfvsys-ske-5920 IFNET/5/LINK_UPDOWN: Line protocol on the interface Ten-GigabitEthernet1/0/1 is down.
+%Jan 28 19:23:33:941 2016 nfvsys-ske-5920 IFNET/3/PHY_UPDOWN: Ten-GigabitEthernet1/0/1 link status is down.
+%Jan 28 19:23:33:913 2016 nfvsys-ske-5920 LAGG/6/LAGG_INACTIVE_PHYSTATE: Member port XGE1/0/1 of aggregation group BAGG50 changed to the inactive state, because the physical state of the port is down.
+%Jan 28 15:37:02:010 2016 nfvsys-ske-5920 IFNET/5/LINK_UPDOWN: Line protocol on the interface M-GigabitEthernet0/0/0 is down.
+%Jan 28 15:37:02:009 2016 nfvsys-ske-5920 IFNET/3/PHY_UPDOWN: M-GigabitEthernet0/0/0 link status is down.
+%Jan 28 15:27:41:814 2016 nfvsys-ske-5920 SHELL/5/SHELL_LOGOUT: TTY logged out from aux0.
+%Jan 28 15:19:21:921 2016 nfvsys-ske-5920 IFNET/5/LINK_UPDOWN: Line protocol on the interface M-GigabitEthernet0/0/0 is up.
+%Jan 28 15:19:21:915 2016 nfvsys-ske-5920 IFNET/3/PHY_UPDOWN: M-GigabitEthernet0/0/0 link status is up.
+%Jan 28 15:15:38:412 2016 nfvsys-ske-5920 CFGMAN/5/CFGMAN_CFGCHANGED: -EventIndex=6-CommandSource=snmp-ConfigSource=startup-ConfigDestination=running; Configuration is changed.
+%Jan 28 15:15:24:503 2016 nfvsys-ske-5920 SHELL/6/SHELL_CMD: -Line=aux0-IPAddr=**-User=**; Command is quit
+%Jan 28 15:15:08:874 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:15:03:550 2016 nfvsys-ske-5920 SHELL/4/SHELL_CMD_MATCHFAIL: -User=**-IPAddr=**; Command int ten  in view Vlan-interface2555 failed to be matched.
+%Jan 28 15:15:01:773 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:32:165 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:30:128 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:29:479 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:27:275 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:22:622 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:20:247 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:18:311 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:16:235 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:09:479 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:07:453 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:14:04:526 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:53:974 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:53:868 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:39:469 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:32:263 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:30:075 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:28:082 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:20:126 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:17:980 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:16:215 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:08:018 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:06:067 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:13:05:909 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:12:48:564 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:12:38:508 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:12:37:518 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+%Jan 28 15:12:30:620 2016 nfvsys-ske-5920 STP/6/STP_NOTIFIED_TC: Instance 0's port Bridge-Aggregation50 was notified a topology change.
+[nfvsys-ske-5920-Ten-GigabitEthernet1/0/1]dis link
+[nfvsys-ske-5920-Ten-GigabitEthernet1/0/1]dis link-aggregation summ
+Aggregation Interface Type:
+BAGG -- Bridge-Aggregation, BLAGG -- Blade-Aggregation, RAGG -- Route-Aggregation
+Aggregation Mode: S -- Static, D -- Dynamic
+Loadsharing Type: Shar -- Loadsharing, NonS -- Non-Loadsharing
+Actor System ID: 0x8000, 2c23-3a5b-61c5
+
+AGG        AGG   Partner ID              Selected  Unselected  Individual  Share
+Interface  Mode                          Ports     Ports       Ports       Type
+--------------------------------------------------------------------------------
+BAGG1      D     0x1   , 5820-b1d2-2861  2         0           0           Shar
+BAGG2      D     0x1   , 5820-b1d2-083d  2         0           0           Shar
+BAGG3      D     0x1   , 5820-b1d2-38f1  2         0           0           Shar
+BAGG4      D     0x1   , 5820-b1d2-289d  2         0           0           Shar
+BAGG5      D     0x1   , 5820-b1d2-2861  2         0           0           Shar
+BAGG6      D     0x1   , 5820-b1d2-083d  2         0           0           Shar
+BAGG7      D     0x1   , 5820-b1d2-38f1  2         0           0           Shar
+BAGG8      D     0x1   , 5820-b1d2-289d  2         0           0           Shar
+BAGG9      D     0x8000, 0000-0000-0000  1         1           0           Shar
+BAGG10     D     0x8000, 0000-0000-0000  1         1           0           Shar
+BAGG50     D     0x8000, 0000-0000-0000  0         2           0           Shar
+
+
+
+
+5930   STP config
+
+
+
+
+
+
+<nfvsys-ske-5930>dis stp
+-------[CIST Global Info][Mode RSTP]-------
+Bridge ID           : 8192.5c8a-3847-556d
+Bridge times        : Hello 2s MaxAge 20s FwdDelay 15s MaxHops 20
+Root ID/ERPC        : 8192.5c8a-3847-556d, 0
+RegRoot ID/IRPC     : 8192.5c8a-3847-556d, 0
+RootPort ID         : 0.0
+BPDU-Protection     : Disabled
+Bridge Config-
+Digest-Snooping     : Disabled
+TC or TCN received  : 841
+Time since last TC  : 0 days 0h:44m:13s
+
+----[Port16899(Bridge-Aggregation1)][FORWARDING]----
+Port protocol       : Enabled
+Port role           : Designated Port (Boundary)
+Port ID             : 128.16899
+Port cost(Legacy)   : Config=auto, Active=1
+Desg.bridge/port    : 8192.5c8a-3847-556d, 128.515
+Port edged          : Config=disabled, Active=disabled
+Point-to-Point      : Config=auto, Active=true
+Transmit limit      : 10 packets/hello-time
+TC-Restriction      : Disabled
+Role-Restriction    : Disabled
+Protection type     : Config=none, Active=none
+MST BPDU format     : Config=auto, Active=802.1s
+Port Config-
+Digest-Snooping     : Disabled
+Rapid transition    : True
+Num of VLANs mapped : 306
+Port times          : Hello 2s MaxAge 20s FwdDelay 15s MsgAge 0s RemHops 20
+BPDU sent           : 80517
+          TCN: 0, Config: 0, RST: 80517, MST: 0
+BPDU received       : 349
+          TCN: 0, Config: 0, RST: 349, MST: 0
+
+----[Port16900(Bridge-Aggregation2)][FORWARDING]----
+Port protocol       : Enabled
+Port role           : Designated Port (Boundary)
+Port ID             : 128.16900
+Port cost(Legacy)   : Config=auto, Active=1
+Desg.bridge/port    : 8192.5c8a-3847-556d, 128.516
+Port edged          : Config=disabled, Active=disabled
+Point-to-Point      : Config=auto, Active=true
+Transmit limit      : 10 packets/hello-time
+TC-Restriction      : Disabled
+Role-Restriction    : Disabled
+Protection type     : Config=none, Active=none
+MST BPDU format     : Config=auto, Active=802.1s
+<
+<nfvsys-ske-5930>dis stp brief
+MST ID   Port                                Role  STP State   Protection
+0        Bridge-Aggregation1                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation2                 DESI  FORWARDING  NONE
+0        Bridge-Aggregation49                DESI  FORWARDING  NONE
+
+#
+stp instance 0 priority 8192
+stp mode rstp
+stp global enable
+#
+
+
+
+6125
+
+all 6125 switches  has priority 16384 with stp turned on
+
+
+

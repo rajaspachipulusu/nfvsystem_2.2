@@ -1,0 +1,139 @@
+Steps:
+
+1. Take config backup using TFTP or FTP
+2. Remove IRF config and IRF cable from all the switch
+3. Apply IRF config.
+4. Connect IRF cable one-by-one, subordinate switch will reboot.
+5. once IRF is formed. upload config through FTP or TFTP.
+
+
+
+SW 1
+*************
+irf member 1 priority 32
+
+int range ten 1/0/21 to ten 1/0/24
+shut
+
+irf-port 1/1
+port group interface Ten-GigabitEthernet 1/0/21
+port group interface Ten-GigabitEthernet 1/0/22
+
+irf-port 1/2
+port group interface Ten-GigabitEthernet 1/0/23
+port group interface Ten-GigabitEthernet 1/0/24
+
+
+
+int range ten 1/0/21 to ten 1/0/24
+undo shut
+irf-port-conf active
+save fast
+
+Sw2
+*********
+irf member 2 priority 30
+
+int range ten 2/0/21 to ten 2/0/24
+shut
+
+irf-port 2/1
+port group interface Ten-GigabitEthernet 2/0/21
+port group interface Ten-GigabitEthernet 2/0/22
+
+irf-port 2/2
+port group interface Ten-GigabitEthernet 2/0/23
+port group interface Ten-GigabitEthernet 2/0/24
+
+irf-port-conf active
+
+int range ten 2/0/21 to ten 2/0/24
+undo shut
+
+save fast
+
+Sw3
+*********
+irf member 3 priority 28
+
+int range ten 3/0/21 to ten 3/0/24
+shut
+
+irf-port 3/1
+port group interface Ten-GigabitEthernet 3/0/21
+port group interface Ten-GigabitEthernet 3/0/22
+
+irf-port 3/2
+port group interface Ten-GigabitEthernet 3/0/23
+port group interface Ten-GigabitEthernet 3/0/24
+
+
+int range ten 3/0/21 to ten 3/0/24
+undo shut
+irf-port-conf active
+save fast
+
+Sw4
+*********
+irf member 4 priority 26
+
+int range ten 4/0/21 to ten 4/0/24
+shut
+
+irf-port 4/1
+port group interface Ten-GigabitEthernet 4/0/21
+port group interface Ten-GigabitEthernet 4/0/22
+
+irf-port 4/2
+port group interface Ten-GigabitEthernet 4/0/23
+port group interface Ten-GigabitEthernet 4/0/24
+
+
+int range ten 4/0/21 to ten 4/0/24
+irf-port-conf active
+undo shut
+
+save fast
+
+
+Sw5
+*********
+irf member 5 priority 24
+
+int range ten 5/0/21 to ten 5/0/24
+shut
+
+irf-port 5/1
+port group interface Ten-GigabitEthernet 5/0/21
+port group interface Ten-GigabitEthernet 5/0/22
+
+irf-port 5/2
+port group interface Ten-GigabitEthernet 5/0/23
+port group interface Ten-GigabitEthernet 5/0/24
+
+
+int range ten 5/0/21 to ten 5/0/24
+undo shut
+irf-port-conf active
+save fast
+
+
+Sw6
+*********
+irf member 6 priority 22
+
+int range ten 6/0/21 to ten 6/0/24
+shut
+
+irf-port 6/1
+port group interface Ten-GigabitEthernet 6/0/21
+port group interface Ten-GigabitEthernet 6/0/22
+
+irf-port 6/2
+port group interface Ten-GigabitEthernet 6/0/23
+port group interface Ten-GigabitEthernet 6/0/24
+
+int range ten 6/0/21 to ten 6/0/24
+undo shut
+irf-port-conf active
+save fast

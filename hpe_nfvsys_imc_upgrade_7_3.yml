@@ -1,0 +1,54 @@
+#(c)Copyright 2016 Hewlett Packard Enterprise
+
+---
+  - hosts: nfvseedvm
+    vars:
+      - CPLM_topfolder_abspath: "/depot/hpe_nfvsystem/common"
+      - depot_path: "/depot/hpe_nfvsystem/hpe_nfvcp"
+
+    tasks:
+
+      - name: Getting the IP of the IMCKVM
+        file: path=/etc/ansible/facts.d/ state=directory
+
+      - name: Getting the IP of the IMCKVM
+        shell: sudo cp {{ item.src }} {{ item.dest }}
+        with_items:
+           - { src: '{{ CPLM_topfolder_abspath }}/schema/nsds/base/component_initial_config/hpe_nfvsys_imc.json', dest: '/etc/ansible/facts.d/hpe_nfvsys_imc.fact' }
+           - { src: '{{ CPLM_topfolder_abspath }}/schema/nsds/base/component_initial_config/hpe_nfvsys_nfvseedvm.json', dest: '/etc/ansible/facts.d/hpe_nfvsys_nfvseedvm.fact'}
+
+      - name: Reading the Json file for the IP
+        setup: filter=ansible_local
+
+      - name: Adding the IMCKVM IP to the inventory
+        add_host: name={{ ansible_local.hpe_nfvsys_imc.imc_internal_management_ip }} group=imckvm
+
+      - name: Creating passwordless authentication between Seedvm and IMCKVM node
+        shell: sshpass -p {{ ansible_local.hpe_nfvsys_imc.imc_vm_password }} ssh-copy-id -o StrictHostKeyChecking=no nfvadmin@{{ ansible_local.hpe_nfvsys_imc.imc_internal_management_ip }}
+
+  - hosts: imckvm
+    remote_user: nfvadmin
+    vars:
+      - depot_path: "/depot/hpe_nfvsystem/hpe_nfvcp"
+
+    tasks:
+
+      - name: Copy required files
+        copy: src={{ depot_path }}/hpe_imc/product/packages/iMC_PLAT_7.3_E0503_Standard_Linux.zip dest=/home/nfvadmin
+
+      - name: creating log file
+        shell: sudo mkdir -p /var/hpe_nfvsystem/logs/
+        become: true
+        ignore_errors: true
+
+      - name: changing owner
+        shell: chdir=/var sudo chown -R nfvadmin:nfvadmin hpe_nfvsystem/
+
+      - name: unzip the pre-requsite
+        shell: chdir=/home/nfvadmin/ unzip iMC_PLAT_7.3_E0503_Standard_Linux.zip
+
+      - name: Creating the imc upgrade log file
+        shell: echo -e "## upgrade of imc started on \t\t\t`date` \n\n" >> /var/hpe_nfvsystem/logs/hpe_nfvsys_imc_upgrade.log
+
+      - name: executing upgrade script
+        shell: chdir=/home/nfvadmin/iMC_PLAT_7.3_E0503_Standard/linux/install/ sudo bash updateSilence.sh >> /var/hpe_nfvsystem/logs/hpe_nfvsys_imc_upgrade.log

@@ -1,0 +1,73 @@
+[root@controller ~]# history
+    1  ls
+    2  cd /etc/sysconfig/network-scripts/
+    3  ls
+    4  yum repolsit
+    5  yum repolist
+    6  export http_proxy=http://15.85.195.199:8080
+    7  yum repolist
+    8  yum install wget
+    9  wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-7.noarch.rpm
+   10  ls
+   11  rpm -ivm epel-release-7-6.noarch.rpm
+   12  rpm -ivh epel-release-7-6.noarch.rpm
+   13  yum nstall http://rdo.fedorapeople.org/openstack-kilo/rdo-release-kilo.
+   14  rpm install http://rdo.fedorapeople.org/openstack-kilo/rdo-release-kilo.
+   15  yum install http://rdo.fedorapeople.org/openstack-kilo/rdo-release-kilo.
+   16  yum install http://rdo.fedorapeople.org/openstack-kilo/rdo-release-kilo
+   17  yum install http://rdo.fedorapeople.org/openstack-kilo/rdo-release-kilo.rpm
+   18  wget http://rdo.fedorapeople.org/openstack-kilo/rdo-release-kilo.rpm
+   19  ls
+   20  rpm -ivh rdo-release-kilo.rpm
+   21  yum install ntp*
+   22  sysctl start ntpd
+   23  systemctl start stpd
+   24  systemctl start ntpd
+   25  systemctl enable ntpd
+   26  system disable firewalld
+   27  systectl disable firewalld
+   28  systemctl disable firewalld
+   29  systemctl stop firewalld
+   30  yum install mariadb mariadb-server MySQL-python
+   31  cd /etc/my.cnf.d
+   32  ls
+   33  vi mariadb_openstack.cnf
+   34  ip addr
+   35  vi mariadb_openstack.cnf
+   36  tail -f /var/log/mariadb/mariadb.log
+   37  systemctl start mariadb
+   38  tail -f /var/log/mariadb/mariadb.log
+   39  systemctl enable mariadb
+   40  ls
+   41  mysql_secure_installation
+   42  yum install rabbitmq-server
+   43  systemctl enable rabbitmq-server
+   44  systemctl start rabbitmq-server
+   45  hostname
+   46  systemctl stop rabbitmq-server
+   47  vi /etc/hosts
+   48  hostname
+   49  vi /etc/hosts
+   50  ip addr
+   51  vi /etc/hosts
+   52  systemctl start rabbitmq-server
+   53  journalctl -xe
+   54  vi /etc/hosts
+   55  systemctl start rabbitmq-server
+   56  systemctl enable rabbitmq-server
+   57  rabbitmqctl add_user openstack HP1nvent
+   58  hostname
+   59  vi /etc/hosts
+   60  reboot
+   61  ip addr
+   62  ls
+   63  systemctl start rabbitmq-server
+   64  rabbitmqctl add_user openstack HP1nvent
+   65  rabbitmqctl set_permissions openstack ".*" ".*" ".*"
+   66  rabbitmq
+   67  rabbitmqctl
+   68  rabbitmqctl delete_user guest
+   69  rabbitmqctl list_users
+   70  rabbitmqctl set_user_tags openstack admin
+   71  rabbitmqctl list_users
+   72  history

@@ -1,0 +1,4 @@
+snmp-agent community write private
+snmp-agent community read public
+snmp-agent sys-info version v2c v3
+snmp-agent target-host trap address udp-domain 10.110.90.13 params securityname public v2c

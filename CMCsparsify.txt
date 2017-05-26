@@ -1,0 +1,3 @@
+﻿CMC Sparsify
+
+virt-sparsify --tmp /mnt KVMCMC.qcow2 KVMCMC1.qcow2

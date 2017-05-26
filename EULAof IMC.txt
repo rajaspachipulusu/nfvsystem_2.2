@@ -1,0 +1,29 @@
+============================================================
+ IMPORTANT:  READ BEFORE INSTALLING OR USING THIS SOFTWARE
+============================================================
+
+ATTENTION: USE OF THE SOFTWARE IS SUBJECT TO THE HP SOFTWARE LICENSE TERMS SET FORTH BELOW. USING THE SOFTWARE INDICATES YOUR ACCEPTANCE OF THESE LICENSE TERMS. IF YOU DO NOT ACCEPT THESE LICENSE TERMS, YOU MAY RETURN THE SOFTWARE FOR A FULL REFUND. IF THE SOFTWARE IS BUNDLED WITH ANOTHER PRODUCT, YOU MAY RETURN THE ENTIRE UNUSED PRODUCT FOR A FULL REFUND. 
+
+HP SOFTWARE LICENSE TERMS 
+
+The following License Terms govern your use of the accompanying Software unless you have a separate signed agreement with HP. These terms and conditions are subject to change by HP.
+
+License Grant. HP grants you a license to Use one copy of the Software. "Use" means storing, loading, installing, executing or displaying the Software. You may not modify the Software or disable any licensing or control features of the Software. If the Software is licensed for "concurrent use", you may not allow more than the maximum number of authorized users to Use the Software concurrently. Absent express written permission from HP, you may not sublicense, distribute, or resell the Software.
+
+Ownership. The Software is owned and copyrighted by HP or its third party suppliers. Your license confers no title to, or ownership in, the Software and is not a sale of any rights in the Software, except that in certain jurisdictions you may have ownership rights in the media on which the Software is supplied. HP's third party suppliers may protect their rights in the event of any violation of these License Terms. Certain third party terms and conditions, such as open source licenses if any, can be found on the media or in the documentation accompanying the Software, or will either be shown during the installation of the Software or displayed from the user interface of the Software, or as otherwise provided by HP. Certain third party software components are required to be distributed under specific terms. With respect to such third party software only, the terms required in the corresponding licenses shall control in the event of a conflict with the terms set forth herein.
+
+Copies and Adaptations. Unless otherwise permitted under applicable law, you may only make copies or adaptations of the Software for archival or back-up purposes or when copying or adaptation is an essential step in the authorized Use of the Software. You must reproduce all copyright and other proprietary notices in the original Software on all copies or adaptations. You may not copy the Software or allow the Software to be copied onto any public network or otherwise communicate the Software to the public.
+
+No Disassembly or Decryption. You may not disassemble or decompile the Software unless HP's prior written consent is obtained. In some jurisdictions, HP's consent may not be required for limited disassembly or decompilation. In those jurisdictions, upon request, you must provide HP with reasonably detailed information regarding any disassembly or decompilation. You may not decrypt the Software unless decryption is a necessary part of the operation of the Software.
+
+Transfer. Your license will automatically terminate upon any transfer of the Software. Upon transfer, you must deliver the Software, including any copies and related documentation, to the transferee. The transferee must accept these License Terms as a condition to the transfer.
+
+Termination. HP may terminate your license upon notice for failure to comply with any of these License Terms. Upon termination, you must immediately destroy the Software, together with all copies, adaptations and merged portions in any form.
+
+If You export, re-export or import Software, technology or technical data purchased hereunder, You assume sole responsibility for complying and will comply with applicable laws and regulations, including without limitation obtaining any required export and import authorizations. You will not export, re-export, import, transfer or distribute Software to persons or entities listed on the U.S. Department of Commerce Denied Persons List, Entity List, or on any U.S. Treasury Department Designated Nationals exclusion list, or to any country or to persons or entities in any country under U.S. economic embargo, or to any persons or entities directly or indirectly involved in the development or production of nuclear, chemical, biological weapons or in missile technology programs as specified in the U.S. Export Administration Regulations (15 CFR 744). By accepting the terms and conditions of this Agreement, You confirm that You are not such a restricted person, entity or country. HP may suspend or terminate this Agreement if You are in violation of applicable regulations.
+
+U.S. Government Licensees.  Consistent with FAR 12.211 and 12.212, Commercial Computer Software, Computer Software Documentation, and Technical Data for Commercial Items are licensed to the U.S. Government under vendor's standard commercial license.
+
+Warranty. The warranty terms associated with the Software and limitation of liability can be found in the warranty booklet which ships with the Software or on the media which accompanies the Software.
+
+Copyright 2013 Hewlett-Packard Development Company, L.P.

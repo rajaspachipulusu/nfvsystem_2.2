@@ -1,0 +1,66 @@
+cs msoftware then ssh hlinux root@10.206.0.1
+		ssh -X root@IP
+virt-manager
+
+
+
+0555-6028-C01E-6794-21F7-0658-AC4E-AFCF-5339-DA41-2FB6-4FC3-4AB4-0C8D-9D6F-673A-DCB3-5C9F-A37F-E33C-8D72-4C78-336A-21AF-3969-C4BD-93F2-1240-1694-5889-8047-CCCC-60
+
+
+
+eth1-650flb 34:64:....:5e:30
+38 ea a7 17 1b oc eth0
+
+
+
+one view patches
+
+
+
+
+
+16.79.29.210 Sundaramoorthy, Vijaianand 
+DL380p Gen8/USE445E3VK ILOUSE445E3VK.telco.fc.hp.com 16.79.29.83 Sundaramoorthy, Vijaianand 
+DL380p Gen8/USE445E3VL ILOUSE445E3VL.telco.fc.hp.com 16.79.29.86 Sundaramoorthy, Vijaianand 
+DL380p Gen8/USE445E3VM ILOUSE445E3VM.telco.fc.hp.com 16.79.29.94 Sundaramoorthy, Vijaianand 
+SV4335 Gen8/MXQ50503TM ILOMXQ50503TM.telco.fc.hp.com 16.79.29.126 Sundaramoorthy, Vijaianand 
+SV4335 Gen8/MXQ50503TL ILOMXQ50503TL.telco.fc.hp.com 16.79.29.219 Sundaramoorthy, Vijaianand 
+
+   Group B
+
+
+
+
+Server/Serial 
+
+
+iLO Hostname 
+
+
+iLO IP 
+
+
+In use by 
+
+
+DL380p Gen8/USE445E3VN ILOUSE445E3VN.telco.fc.hp.com  Sundaramoorthy, Vijaianand 
+DL380p Gen8/USE445E3VP ILOUSE445E3VP.telco.fc.hp.com 16.79.29.95 Sundaramoorthy, Vijaianand 
+DL380p Gen8/USE445E3VR ILOUSE445E3VR.telco.fc.hp.com 16.79.29.127 Sundaramoorthy, Vijaianand 
+DL380p Gen8/USE445E3VS ILOUSE445E3VS.telco.fc.hp.com 16.79.29.12 
+
+
+
+
+boot order yes
+no connections,boot mode pxe not given 
+bios setting minimal
+
+
+
+check for ovf file
+one view server profile for bl server
+bomb
+
+
+c7000 enc 460c
+dl 380p gen8,9

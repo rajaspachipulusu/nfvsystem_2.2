@@ -1,0 +1,48 @@
+# The primary network interface
+auto br-pxe
+allow-ovs br-pxe
+iface br-pxe inet static
+address 10.206.199.3
+netmask 255.255.255.0
+gateway 10.206.199.1
+ovs_type OVSBridge
+ovs_ports eth4
+
+#Bring up interface online
+allow-br-pxe eth4
+iface eth4 inet manual
+ovs_bridge br-pxe
+ovs_type OVSPort
+
+auto br-clm
+allow-ovs br-clm
+iface br-clm inet manual
+ovs_type OVSBridge
+ovs_ports eth4.190
+
+allow-br-clm eth4.190
+iface eth4.190 inet manual
+ovs_bridge br-clm
+ovs_type OVSPort
+
+auto br-bls
+allow-osv br-bls
+iface br-bls inet manual
+ovs_type OVSBridge
+ovs_ports eth4.192
+
+allow-br-bls eth4.192
+iface eth4.192 inet manual
+ovs_bridge br-bls
+ovs_type OVSPort
+
+auto br-dcm
+allow-osv br-dcm
+iface br-dcm inet manual
+ovs_type OVSBridge
+ovs_ports eth4.194
+
+allow-br-dcm eth4.194
+iface eth4.194 inet manual
+ovs_bridge br-dcm
+ovs_type OVSPort

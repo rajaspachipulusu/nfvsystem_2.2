@@ -1,0 +1,18 @@
+steps to give root permissions 
+
+1. in /etc/ssh/sshd_config file 
+PermitRootLogin yes (it will be either no or without-password change it to yes)
+2. /etc/init.d/ssh restart
+3. passwd (give the required password )
+4. Reload the ssh 
+/etc/init.d/ssh reload
+
+
+in sudoers file /etc/sudoers 
+
+1. give the permission to user.
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+rajas ALL=NOPASSWD:ALL
+
+so that it doesnt ask for passowrd

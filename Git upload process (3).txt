@@ -1,0 +1,27 @@
+ 501  cd /opt/
+  502  mkdir git8
+  503  cd git8
+  504  ls
+  505  git clone ssh://rajas.p.r@cgit-pro.houston.hp.com:29418/verticalsolutions
+  506  cd verticalsolutions/nfvsystems/1.1/src/cmc/
+  507  ls
+  508  cd scripts/
+  509  ls
+  510  cp -r /tmp/16.79.29.33/*cmc* .
+  511  ls
+  512  cd ../..
+  513  cd imc/scripts/
+  514  ls
+  515  cp -r /tmp/16.79.29.33/*imc* .
+  516  ls
+  517  cd ..
+  518  cd ..
+  519  git config user.name "rajas.p.r"
+  520  git config user.email "rajas.p.r@hp.com"
+  521  git remote add gerrit ssh://rajas.p.r@cgit-pro.houston.hp.com:29418/verticalsolutions
+  522  git config gitreview.username rajas.p.r
+  523  git add . --force
+  524  fit status
+  525  git status
+  526  git commit -m "Code for IMC and CMC"
+  527  git review

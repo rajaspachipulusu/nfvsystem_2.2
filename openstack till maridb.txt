@@ -1,0 +1,76 @@
+    1  ip addr
+    2  ifconfig
+    3  ip addr
+    4  cd /etc/
+    5  cd sysconfig/
+    6  ls
+    7  cd network
+    8  ls
+    9  cd network-scripts/
+   10  ls
+   11  vi ifcfg-eno33554960
+   12  vi ifcfg-eno16777736
+   13  vi ifcfg-eno33554960
+   14  systemctl restart network
+   15  ip addr
+   16  yum repo-list
+   17  yum repo list
+   18  yum repolist
+   19  ping 15.85.195.199
+   20  export http_proxy=http://15.85.195.199:8080
+   21  yum repo list
+   22  yum repolist
+   23  yum install wget
+   24  wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-6.noarch.rpm
+   25  ls
+   26  /etc/yum.repos.d/
+   27  cd /etc/yum.repos.d/
+   28  ;s
+   29  ls
+   30  yum install http://rdo.fedorapeople.org/openstack-kilo/rdo-release-kilo.
+   31  yum install http://rdo.fedorapeople.org/openstack-kilo/rdo-release-kilo.rpm
+   32  ls
+   33  yum install ntp*
+   34  systemctl start ntpd
+   35  systemctl enable ntpd
+   36  ntpq -p
+   37  systemctl disable firewalld
+   38  systemctl stop firewalld
+   39  yum install mariadb mariadb-server MySQL-python -y
+   40  cd /etc/my.cnf.d
+   41  ls
+   42  vi mariadb_openstack.cnf
+   43  id addr
+   44  ip addr
+   45  vi mariadb_openstack.cnf
+   46  systemctl enable mariadb.service
+   47  systemctl start mariadb.service
+   48  tailf /var/log/mariadb/mariadb.log
+   49   systemctl enable mariadb.service
+   50  mysql_secure_installation
+   51  yum install rabbitmq-server
+   52  ping 8.8.8.8
+   53  systemctl enable rabbitmq-server
+   54  systemctl start rabbitmq-server
+   55  tailf /var/log/rabbitmq/
+   56  vi /etc/hosts
+   57  cat /etc/my.cnf.d/mariadb_openstack.cnf
+   58  vi /etc/hosts
+   59  systemctl enable rabbitmq-server
+   60  systemctl start rabbitmq-server
+   61  tailf /var/log/rabbitmq/rabbit\@controller
+   62  tailf /var/log/rabbitmq/rabbit\@controller.log
+   63  rabbitmqctl add_user admin admin
+   64  rabbitmqctl  add_permissions rabbitmq ".*" ".*" ".*"
+   65  rabbitmqctl  set_permissions rabbitmq ".*" ".*" ".*"
+   66  rabbitmqctl  set_permissions admin ".*" ".*" ".*"
+   67  rabbitmqctl list_users
+   68  rabbitmqctl delete_user guest
+   69  rabbitmqctl set_tags admin "administrator"
+   70  rabbitmqctl set_user_tags admin "administrator"
+   71  rabbitmqctl list_users
+   72  
+   73  cd /etc/sysconfig/network-scripts/
+   74  ls
+   75  cat ifcfg-eno16777736
+   76  cat ifcfg-eno33554960

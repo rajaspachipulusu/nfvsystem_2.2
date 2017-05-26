@@ -1,0 +1,14 @@
+deb http://hlinux-deejay.usa.hp.com/hLinuxArchive/2015/repo.2015-05-13/ cattleprod main non-free contrib
+deb-src http://hlinux-deejay.usa.hp.com/hLinuxArchive/2015/repo.2015-05-13/ cattleprod main non-free contrib
+15.242.208.25
+
+
+http_proxy="http://16.85.175.150:8080/"
+https_proxy="http://16.85.175.150:8080/"
+
+
+ovs-vsctl add-port br-pxe em49
+ovs-vsctl add-port br-bls em49.vlanid
+ovs-vsctl add-port br-clm em49.vlanid
+ovs-vsctl add-port br-dcm em49.vlanid
+

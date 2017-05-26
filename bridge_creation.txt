@@ -1,0 +1,54 @@
+#/etc/network/interface file
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo eth4
+iface lo inet loopback
+auto brpxe
+iface brpxe inet static
+address 10.207.40.4
+netmask 255.255.255.0
+gateway 10.207.40.1
+bridge_ports eth4
+bridge_fd 0
+bridge_stp off
+bridge_maxwait 0
+
+
+install bridge utils
+
+
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo eth4
+iface lo inet loopback
+auto brpxe
+iface brpxe inet static
+address 10.207.40.4
+netmask 255.255.255.0
+gateway 10.207.40.1
+bridge_ports eth4
+bridge_fd 0
+bridge_stp off
+bridge_maxwait 0
+
+auto brclm
+iface brclm inet static
+address 10.207.30.4
+netmask 255.255.255.0
+#gateway 10.207.30.1
+bridge_ports eth6
+bridge_fd 0
+bridge_stp off
+bridge_maxwait 0
+
+

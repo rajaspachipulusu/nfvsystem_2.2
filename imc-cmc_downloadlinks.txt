@@ -1,0 +1,17 @@
+we will have to create an account and download bits for both IMC and CMC
+
+IMC
+
+download iMC Bits : https://ssl.www8.hp.com/us/en/campaigns/imc-60-day-free-trial/thank-you.html
+
+Type of download - (IMC, Enterprise – manage 50 nodes, includes Network Traffic Analyzer *)
+
+
+
+CMC
+
+download CMC Bits : https://hpp12.passport.hp.com/hppcf/login.do?TYPE=33554433&REALMOID=06-00009d0f-4384-115c-aa2f-065b10d2d066&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=$SM$C%2bT2B7TjetnqMJdXotWoM9MA%2bL1cpDoPlfjv%2bUOalji%2f9H0cIq8vyC8gUYmWdmjr&TARGET=$SM$HTTPS%3a%2f%2fhpp12%2epassport%2ehp%2ecom%2fhppcf%2fdologin%2edo%3fhpappid%3dPDAPI_PRO_SWD%26TYPE%3d33554433%26REALMOID%3d06-000bff06-0c09-119b-9ba0-144110c1d0e6%26GUID%3d%26SMAUTHREASON%3d0%26METHOD%3dGET%26SMAGENTNAME%3d$$SM$$jFQmGZSMluI$%2f5VRZr9vg$%2bi8maYtLsPVC$%2fCZVlvgIqJjdbXSvUf1xpEUeybvXFZiq%26TARGET%3d$$SM$$HTTPS$%3a$%2f$%2fh20392$%2ewww2$%2ehp$%2ecom$%2fportal$%2fswdepot$%2ftry$%2edo$%3fproductNumber$%3dStoreVirtualSW-10$%2e0
+
+Type of download (HP StoreVirtual CMC Installer for Linux (BM480-10537.bin))
+
+Both of them has been in Redhat environment 

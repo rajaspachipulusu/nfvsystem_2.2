@@ -1,0 +1,79 @@
+[DEPRECATION WARNING]: Instead of sudo/sudo_user, use become/become_user and make sure become_method is 'sudo' (default).
+This feature will be removed in a future release. Deprecation warnings can
+be disabled by setting deprecation_warnings=False in ansible.cfg.
+
+PLAY [nfvseedvm] ***************************************************************
+
+TASK [setup] *******************************************************************
+ok: [127.0.0.1]
+
+TASK [cmc-prereq : include_vars] ***********************************************
+ok: [127.0.0.1]
+
+TASK [cmc-prereq : checking the hardware version] ******************************
+changed: [127.0.0.1]
+
+TASK [cmc-prereq : fail] *******************************************************
+skipping: [127.0.0.1]
+
+TASK [cmc-prereq : Getting the IP of the CMCKVM] *******************************
+ok: [127.0.0.1]
+
+TASK [cmc-prereq : Getting the IP of the CMCKVM] *******************************
+changed: [127.0.0.1] => (item={u'dest': u'/etc/ansible/facts.d/hpe_nfvsys_cmc_kvm.fact', u'src': u'/depot/hpe_nfvsystem/common/schema/nsds/base/component_initial_config/hpe_nfvsys_cmc_kvm.json'})
+changed: [127.0.0.1] => (item={u'dest': u'/etc/ansible/facts.d/hpe_nfvsys_nfvseedvm.fact', u'src': u'/depot/hpe_nfvsystem/common/schema/nsds/base/component_initial_config/hpe_nfvsys_nfvseedvm.json'})
+
+TASK [cmc-prereq : Reading the Json file for the IP] ***************************
+ok: [127.0.0.1]
+
+TASK [cmc-prereq : Adding the CMCKVM IP to the inventory] **********************
+changed: [127.0.0.1]
+
+TASK [cmc-prereq : Creating passwordless authentication between Seedvm and CMCKVM node] ***
+changed: [127.0.0.1]
+
+TASK [cmc-prereq : Add repo to cmc] ********************************************
+changed: [127.0.0.1]
+
+TASK [cmc-prereq : Updating the repo] ******************************************
+changed: [127.0.0.1]
+
+TASK [cmc-prereq : Installing the python and snp packages] *********************
+changed: [127.0.0.1] => (item=python)
+changed: [127.0.0.1] => (item=snmpd)
+
+PLAY [cmckvm] ******************************************************************
+
+TASK [setup] *******************************************************************
+ok: [10.206.95.20]
+
+TASK [cmckvm-upgrade : include_vars] *******************************************
+ok: [10.206.95.20]
+
+TASK [cmckvm-upgrade : Copy required files for upgrade] ************************
+ok: [10.206.95.20]
+
+TASK [cmckvm-upgrade : Copy required files for VSA upgrade] ********************
+ok: [10.206.95.20]
+
+TASK [cmckvm-upgrade : extract the files] **************************************
+changed: [10.206.95.20]
+ [WARNING]: Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+
+
+TASK [cmckvm-upgrade : check the version of CMC] *******************************
+changed: [10.206.95.20]
+
+TASK [cmckvm-upgrade : checking the version of CMC] ****************************
+fatal: [10.206.95.20]: FAILED! => {"changed": true, "cmd": "cat /opt/HPE/StoreVirtual/UI/version.txt |grep Version", "delta": "0:00:00.015250", "end": "2016-12-09 06:05:08.218813", "failed": true, "rc": 1, "start": "2016-12-09 06:05:08.203563", "stderr": "cat: /opt/HPE/StoreVirtual/UI/version.txt: No such file or directory", "stdout": "", "stdout_lines": [], "warnings": []}
+...ignoring
+
+TASK [cmckvm-upgrade : fail] ***************************************************
+fatal: [10.206.95.20]: FAILED! => {"changed": false, "failed": true, "msg": "CMC is already in latest version.....EXITING"}
+
+NO MORE HOSTS LEFT *************************************************************
+        to retry, use: --limit @hpe_nfvsys_cmc_upgrade2.retry
+
+PLAY RECAP *********************************************************************
+10.206.95.20               : ok=7    changed=2    unreachable=0    failed=1
+127.0.0.1                  : ok=11   changed=7    unreachable=0    failed=0

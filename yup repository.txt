@@ -1,0 +1,27 @@
+ 140  df -h
+  141  cd /media/RHEL_6.4\ x86_64\ Disc\ 1/
+  142  ls
+  143  cd Packages/
+  144  ls libXtst*
+  145  rpm -ivh deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm
+  146  rpm -ivh createrepo-0.9.9-17.el6.noarch.rpm
+  147  rpm -ivh python-deltarpm
+  148  rpm -ivh python-deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm
+  149  rpm -ivh createrepo-0.9.9-17.el6.noarch.rpm
+  150  df -h
+  151  mkdir /image/Packages
+  152  cp -rp * /image/Packages/
+  153  createrepo /image/Packages/
+  154  vi /etc/yum.conf
+  155  yum clean all
+  156  yum repolist
+  157  yum install libXtst
+  158  yum install libXtst*
+  159  yum install libXtst.i686
+  160  vi /etc/yum.conf
+  161  yum install libXtst.i686
+  162  history
+
+
+
+creating yup repository in local

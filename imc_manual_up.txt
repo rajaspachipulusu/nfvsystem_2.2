@@ -1,0 +1,36 @@
+steps for making up imc manually 
+
+
+login to seed vm and change directory to
+cd /depot/hpe_nfvsystem/common/tools/cplm/cplm_lib/cplm_imc/
+
+scp imcvm_auto.sh imckvm.xml nfvadmin@10.207.40.2:/data1/opensaf
+
+once tat is successful. change the directory to 
+
+cd /depot/hpe_nfvsystem/hpe_nfvcp/hpe_imc/product/images
+copy the qcow2
+
+scp -r nfv.qcow2  nfvadmin@10.207.40.2:/data1/opensaf 
+
+login to contorller 1
+
+cd /data1/opensaf
+
+virsh define imckvm.xml on both the nodes
+
+after defining, on one of the controller nodes please execute following command. change the ip according to the enviroment.
+
+
+sudo bash imcvm_auto.sh /data1/opensaf/nfv.qcow2 10.207.30.21 255.255.255.0 10.207.30.1 10.207.30.2 10.207.31.14 255.255.255.0
+
+once this is executed successfully,run the follwoing command.
+
+import2imm -d imckvm -p
+
+the above command will bring VM to HA state.
+
+then execute kvmha -d imckvm -c status 
+
+on one now imc should and on other node it should be standby
+

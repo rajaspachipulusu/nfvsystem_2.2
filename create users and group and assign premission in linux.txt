@@ -1,0 +1,29 @@
+
+Sudo Configuration for KVM Nodes.
+----------------------------------
+
+Defaults        env_reset,timestamp_timeout=0  --> which will ask the password everytime we run the command preceded with sudo.
+
+a) Cmnd_Alias OPENSAFCMDS = /etc/init.d/opensafd, /usr/bin/kvmha *, /usr/bin/virsh list *,
+
+a) create a group called 'admin'  and kvmadmin add users to both the groups  which can run any commands on the host.
+
+
+%admin  ALL=(ALL) ALL
+%kvmadmin ALL = OPENSAFCMDS
+
+
+1) add user gtk to the group sudo 
+
+sudo usermod -aG sudo gtk
+
+
+a) Eliminate NOPASSWD option. NOPASSWD  gives an option to run the eligible commands without prompting 
+
+for any password. Not a  best option. Applies to all systems except seedvm
+
+But NOPASSWD should be required in the seedvm for the playbooks to run non-interactively.
+
+
+
+

@@ -1,0 +1,134 @@
+#!/usr/bin/python
+############################################################################
+#         (C) Copyright 2016 Hewlett-Packard Enterprise Company, L.P.      #
+############################################################################
+#                       NFVSYSTEMS 2.2
+
+from ansible.module_utils.basic import *
+import threading
+import time
+import os
+import datetime
+import subprocess
+import sys
+import json
+import shlex
+from  datetime import datetime
+from time import strftime
+from copy import deepcopy
+from cplm_lib.cplm_common.cplm_schema_env_vars import CPLM_topfolder_abspath, CPLM_common_path, CPLM_software_path
+from custom_module_lib import *
+success_tags = 0
+
+#start_time=(strftime("%Y-%m-%d %H:%M:%S"))
+#FMT="%Y-%m-%d %H:%M:%S"
+
+
+module = AnsibleModule(
+        argument_spec=dict(
+            component = dict(required=True),
+            regions = dict(required=True)
+        )
+    )
+
+args_component = module.params['component']
+if args_component == None:
+    module.fail_json(msg="requires a component")
+else:
+    component = args_component.split(',')
+
+args_region = module.params['regions']
+if args_region == None:
+    module.fail_json(msg="requires number of region")
+else:
+    regions = int(args_region)
+
+#component="controller0"
+#component = ['controller1','storage_install','provider_net']
+#regions=1
+
+if (os.path.isfile(file_path+'controller0_r1.json')):
+    json_data = json.load(open(file_path+'controller0_r1.json'))
+    ctrl0_success_tags = len(json_data.keys())
+else:
+    pass
+
+
+if regions == 1 and ctrl0_success_tags != total_ctrl0_tags:
+    controller0(regions)
+elif regions == 1 and ctrl0_success_tags == total_ctrl0_tags:
+    for comp in component:
+        threads.append(threading.Thread(target=eval(comp),args=(regions,)))
+else:
+    if (os.path.isfile(scripts_base_path+'controller1_r1.json')):
+        ctrl1_data = json.load(open(scripts_base_path+'controller1_r1.json'))
+        ctrl1_success_tags = len(ctrl1_data.keys())
+    if (os.path.isfile(scripts_base_path+'storage_install_r1.json')):
+        storage_install_data = json.load(open(scripts_base_path+'storage_install_r1.json'))
+        storage_install_success_tags = len(storage_install.keys())
+    if (os.path.isfile(scripts_base_path+'provider_net_r1.json')):
+        provider_net_data = json.load(open(scripts_base_path+'controller1_r1.json'))
+        provider_net_success_tags = len(provider_net_data.keys())
+    if (os.path.isfile(scripts_base_path+'storage_config_r1.json')):
+        storage_config_data = json.load(open(scripts_base_path+'storage_config_r1.json'))
+        storage_conf_success_tags = len(storage_config_data.keys())
+    if ((ctrl1_success_tags == total_ctrl1_tags) and \
+        (provider_net_success_tags == total_provider_net_tags) and \
+        (storage_install_success_tags == storage_install_success_tags )and \
+        (storage_conf_success_tags == total_storage_conf_tags)):
+        for regions in range(2,regions+1):
+            for comp in component:
+                threads.append(threading.Thread(target=eval(comp),args=(regions,)))
+
+for i in threads:
+    i.start()
+while threading.activeCount()!= 1:
+    time.sleep(20)
+
+
+if len(component_failed) == 0 and len(component_installed) == 0:
+    print json.dumps({
+               "success" : True,
+               "items_installed": "windriver",
+			   "items_already_intstalled": component_already_installed,
+               "msg": "windriver is already installed"
+                     })
+elif len(component_failed) != 0:
+    print json.dumps({
+               "failed" : True,
+               "items_installed": component_installed,
+               "items_failed": component_failed,
+			   "items_already_installed": component_already_installed,
+               "items_installed": "windriver",
+                     })
+elif len(component_installed) != 0 and len(component_failed) == 0:
+    print json.dumps({
+               "success" : True,
+               "items_installed": component_installed,
+               "total_items_installed": len(component_installed),
+               "items_failed": "None",
+               "items_installed": "windriver",
+               "msg": "Windriver automation successful"
+                     })
+
+'''
+if len(component_new_list) != 0:
+    time_tack_json("WINDRIVER",[str(datetime.strptime(strftime("%Y-%m-%d %H:%M:%S"), FMT) -datetime.strptime(start_time, FMT)),"INSTALLED","\033[1;32;40mSUCCESS\033[0m"],"time_track.json")
+    print json.dumps({
+                   "success" : True,
+                   "start-time": start_time,
+                   "end_time": (strftime("%Y-%m-%d %H:%M:%S")),
+                   "total_time": str(datetime.strptime(strftime("%Y-%m-%d %H:%M:%S"), FMT) - datetime.strptime(start_time, FMT)),
+                   "items_installed": 1,
+                   "items_installed": "windriver",
+                   "msg": "windriver installed successfully"
+                         })
+
+else:
+       print json.dumps({
+                   "success" : True,
+                   "items_installed": 0,
+                   "items_installed": "none",
+                   "msg": "windriver already"
+                         })
+'''

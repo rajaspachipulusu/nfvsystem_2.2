@@ -1,0 +1,28 @@
+pre-requiste::
+
+-> Seedvm must be up and running
+-> All the requied files should be present in SeedVM
+   (Qcow2)
+-> All IMC related Scripts must be present in /etc/ansible path
+-> Run the command on SeedVM to deploy IMC
+	ansible-playbook hp_nfvsys_deploy_imcvm.yml -e "operation=deploy"
+-> Backup script : backup of Configuartions switch
+-> Restore script : Restoring of the same.
+
+Test cases:
+
+-> Check whether reqiued files are copied to KVM Host.
+
+-> Check whether required bridges(br-clm,br-can) is created on kvm host
+
+-> check whether required packages are installed or not on KVM host
+
+-> check whether deployed IMC is been correctly logging through "Mobaxtrem P E"
+
+-> check whether the IP to the interface on IMCVM is assigned correctly by command'ifconfig'
+	eth0 - clm ip 
+	eth1 - cam ip
+
+-> check whether clm gateway is assigned as default gateway or not.Can be checked using command 'route -n'
+
+-> Check whether IMC VM IP is pinging or not from SeedVM - connectivity between IMC VM and SeedVM

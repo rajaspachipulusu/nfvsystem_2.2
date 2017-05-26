@@ -1,0 +1,2 @@
+http://g4t8104.houston.hpecorp.net/LinuxCOE/VMWare-iso/    - vmware images
+ftp://linuxcoe.corp.hp.com/RedHat-iso-secure/RHEL6/x86_64/ - Red hat images

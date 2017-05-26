@@ -1,0 +1,6 @@
+# IMAGE=`virsh domblklist oneviewtst | grep vda | awk '{print $NF}'`
+# virsh snapshot-create-as imc --no-metadata snap1 "backup snap" --disk-only --atomic --diskspec vda,snapshot=external,file=/snaps/oneviewtst.qcow.snap1
+# rsync -azv --progress --inplace ${IMAGE} <destination>
+# virsh blockcommit oneviewtst vda 0 --wait --active
+# virsh blockjob oneviewtst vda --pivot
+# rm -f /snaps/oneviewtst.qcow.snap1

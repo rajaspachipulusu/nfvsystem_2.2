@@ -1,0 +1,28 @@
+yum remove mysql will not ask for dependence (--nodeps)
+chkconfig mysql on (mysql will be up if rebooted also)
+
+
+7hsrYYW1g0qXsbQ8
+
+
+
+once u loging to mysql prompt you have to set password 
+set password= password('HP1nvent')
+
+then try to login by mysql -u root -p giving HP1nvent as password
+
+grant all privileges on *.* to root@'%' identified by 'HP1nvent' with grant option;
+
+
+select USer,Hosts from mysql.User;
+
+character-set-server = latin1
+default-storage-engine = INNODB
+innodb_buffer_pool_size = 512M
+innodb_additional_mem_pool_size = 16M
+max_allowed_packet = 200M
+max_connections = 400
+lower_case_table_names = 1
+
+
+

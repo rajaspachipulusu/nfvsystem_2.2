@@ -1,0 +1,87 @@
+root@NFVSYS-NFVSEED-VM-001:~# cd /opt/git/
+root@NFVSYS-NFVSEED-VM-001:/opt/git# ls
+verticalsolutions
+root@NFVSYS-NFVSEED-VM-001:/opt/git# mkdir ../git1
+root@NFVSYS-NFVSEED-VM-001:/opt/git# cd ../git1
+root@NFVSYS-NFVSEED-VM-001:/opt/git1# ls
+root@NFVSYS-NFVSEED-VM-001:/opt/git1#  git clone ssh://rajas.p.r@cgit-pro.houston.hp.com:29418/verticalsolutions
+Cloning into 'verticalsolutions'...
+sachin.kumar8@cgit-pro.houston.hp.com's password:
+remote: Counting objects: 1353, done
+remote: Finding sources: 100% (1353/1353)
+remote: Total 1353 (delta 212), reused 1336 (delta 212)
+Receiving objects: 100% (1353/1353), 1.97 MiB | 1.93 MiB/s, done.
+Resolving deltas: 100% (212/212), done.
+Checking connectivity... done.
+
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc/configs# ls
+testfile
+
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# git config user.name "rajas.p.r"
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# git config user.email "rajas.p.r@hp.com"
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# git remote add gerrit ssh://rajas.p.r@cgit-pro.houston.hp.com:29418/verticalsolutions
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# git config gitreview.username rajas.p.r
+/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# cd scripts/
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc/scripts# ls
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc/scripts# pwd
+/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc/scripts
+
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# pwd
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc/scripts# cd /home/nfvadmin/SV/
+root@NFVSYS-NFVSEED-VM-001:/home/nfvadmin# ls
+5920.txt  auth.yaml.retry  hp_nfvsys_ansible_esxilo.yaml.retry  hp_nfvsys_sv_cleanup.py  hp_nfvsys_sv_postcheck.py  hp_nfvsys_valueadd.yaml.retry  SV                   test.yaml.retry
+5930.txt  E1-6125-B.txt    hp_nfvsys_ansible_esxsv.yaml.retry   hp_nfvsys_sv_deploy.py   hp_nfvsys_sv_precheck.py   logging                        testwait.yaml.retry
+root@NFVSYS-NFVSEED-VM-001:/home/nfvadmin# cp *.py /opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc/scripts
+root@NFVSYS-NFVSEED-VM-001:/home/nfvadmin# cd /opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc/scripts
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc/scripts# git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        ./
+
+nothing added to commit but untracked files present (use "git add" to track)
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc/scripts# cd ..
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# ls
+configs  scripts  testdata  utils
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        scripts/
+
+nothing added to commit but untracked files present (use "git add" to track)
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# ls
+configs  scripts  testdata  utils
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# git add scripts/. --force
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# git commit -m "Python scripts for SV"
+[master e49f78c] Python scripts for SV
+ 4 files changed, 912 insertions(+)
+ create mode 100644 nfvsystems/1.0/src/cmc/scripts/hp_nfvsys_sv_cleanup.py
+ create mode 100644 nfvsystems/1.0/src/cmc/scripts/hp_nfvsys_sv_deploy.py
+ create mode 100644 nfvsystems/1.0/src/cmc/scripts/hp_nfvsys_sv_postcheck.py
+ create mode 100644 nfvsystems/1.0/src/cmc/scripts/hp_nfvsys_sv_precheck.py
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc# git review
+sachin.kumar8@cgit-pro.houston.hp.com's password:
+sachin.kumar8@cgit-pro.houston.hp.com's password:
+remote: Resolving deltas: 100% (3/3)
+remote: Processing changes: new: 1, refs: 1, done
+remote:
+remote: New Changes:
+remote:   https://cgit-pro.houston.hp.com/gerrit/29569
+remote:
+To ssh://sachin.kumar8@cgit-pro.houston.hp.com:29418/verticalsolutions
+ * [new branch]      HEAD -> refs/publish/master
+root@NFVSYS-NFVSEED-VM-001:/opt/git1/verticalsolutions/nfvsystems/1.0/src/cmc#
+
+
+
+If there are any isseus run git reset --hard and start the process again.

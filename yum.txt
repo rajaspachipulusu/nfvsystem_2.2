@@ -1,0 +1,40 @@
+[rhel-source]
+name=rhel64
+
+baseurl=http://16.125.112.219/dist/install/rhel/rhel6.4ga/Server/x86_64/Server/
+
+gpgcheck=no
+
+
+I36 12/24/2014
+
+iLO Firmware
+
+2.10 Jan 15 2015
+
+10.206.30.250
+
+4.30 Jul 08 2014
+
+
+4.30 Jul 08 2014
+iLO4  2.10 Jan 15 2015
+
+Release 2406P01
+2.10 Jan 15 2015: 4.40
+
+P89 12/24/2014 
+10.206.40.50
+
+2.10 Jan 15 2015
+
+10.206.40.18
+Control servers
+
+Compute servers
+
+Starter Kit DL FC-13
+
+HP Comware Software, Version 7.1.045, Release 2311P06
+
+4.14.5.1 please give CMC VM rather the ESXi server in  

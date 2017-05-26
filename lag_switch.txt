@@ -1,0 +1,33 @@
+interface Bridge-Aggregation 20
+port link-type trunk
+port trunk permit vlan 1200 1220 1223
+port trunk pvid vlan 1200
+link-aggregation mode dynamic
+
+
+int ten 1/0/6:1
+port link-aggregation group 20
+quit
+
+
+int ten 2/0/6:1
+port link-aggregation group 20
+quit
+
+
+
+interface Bridge-Aggregation 21
+port link-type trunk
+port trunk permit vlan 1200 1220 1221 1224
+port trunk pvid vlan 1200
+link-aggregation mode dynamic
+
+
+int ten 1/0/6:2
+port link-aggregation group 21
+quit
+
+
+int ten 2/0/6:2
+port link-aggregation group 21
+quit

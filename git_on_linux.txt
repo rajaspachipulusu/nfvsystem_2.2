@@ -1,0 +1,31 @@
+ 510  ssh-keygen
+  511  cd .ssh/
+  512  ls
+  513  clear
+  514  ls
+  515  cat id_rsa.pub
+  516  git
+  517  clear
+  518  cd /home/nfvadmin/test
+  519  clear
+  520  ls
+  521  ping 16.79.29.208
+  522  clear
+  523  git config user.name "Rajas"
+  524  clear
+  525  git clone ssh://rajas.p.r@16.79.29.208:29418/Verticalsolutions && scp -p -P 29418 rajas.p.r@16.79.29.208:hooks/commit-msg Verticalsolutions/.git/hooks/
+  526  cd Verticalsolutions/
+  527  clear
+  528  git config user.name "Rajas"
+  529  git config user.email "rajas.p.r@hpe.com"
+  530  git branch
+  531  git branch -a
+  532  git checkout -b develop origin/develop
+  533  clear
+  534  ls
+  535  cd  nfvsystems/
+ 536  ls
+  537  cd ..
+  538  cd nfvsystems/
+  539  history
+root@NFVSYS-NFVSEEDVM-0

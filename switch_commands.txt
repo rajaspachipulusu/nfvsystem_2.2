@@ -1,0 +1,22 @@
+for creating link aggraction
+int bridge-agg <no>
+port link mode dynamic
+
+int ten 1/0/20
+port link-agg <no>
+
+int bridge-agg<>
+port link-type trunk
+port allowd vlan <.....>
+
+
+assigning vlan to port
+interface range ten 4/0/9 to ten 4/0/18
+port link-type trunk 
+port trunk permit vlan 1602 1620 1621 1623 1624 (vlan numbers)
+port trunk pvid vlan 1602
+
+interface range ten 5/0/13 to ten 5/0/18
+port link-type trunk 
+port trunk pvid vlan 1602
+port trunk permit vlan  1602 1620 1621 1623 1624

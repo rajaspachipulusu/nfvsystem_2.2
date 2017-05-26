@@ -1,0 +1,47 @@
+docs location of  SV scripts has to mentioned
+
+seconds should not be there
+power off space has been provided
+
+
+all one view images has to be replaced as it is hp-nfvsys to hp_nfvsys images
+
+we will have to give steps to access CMC throught and reflection command
+
+6.4 4
+
+3LtIxU1vqRD4TQaf
+
+
+we  have to restart my sql service once changes are made in /etc/my.cnf
+we have to install in /home/linux/install folder
+
+
+system-config-network
+/etc/int.d/networkingManager
+
+/var/log/messages
+dmesg | grep -i eth
+/etc/udev/rules.d/70-persistent
+
+52 44 00 F1 40 FB
+
+CMC precheck postcheck deploy with logs is done
+IMC precheck post check deploy with logs is done
+SV precheck postcheck and deploy with logs is done
+
+
+
+
+creation Of 2nd interface for VM
+go to /depot/hp_nfvsys/common/tools
+run command python hp_nfvsys_nic.py
+where it would create an interface to the VM and assigns the ip address,netmask.
+
+ovs-vsctl add-br br-clm
+
+
+
+
+
+Functionality wise it was tested by rajashanker and shiva earlier as there is no exernal VM with ip we are using.

@@ -1,0 +1,20 @@
+   12  git commit -m "first commit"
+   13  git config --global user.email "rajaspachipulusu@gmail.com"
+   14  git config --global user.name "rajas"
+   15  git remote add origin https://github.com/rajaspachipulusu/nfvsystem_2.2.git
+   16  git push -u origin master
+   17  git remote add origin https://github.com/rajaspachipulusu/nfvsystem_2.2.git
+   18  git branch
+   19  git branch -b
+   20  git branch
+   21  git push -u origin master
+   22  apt install wget
+   23  wget https://github.com/rajaspachipulusu/nfvsystem_2.2.git
+   24  ls
+   25  rm nfvsystem_2.2.git
+   26  git remote add origin https://192.30.253.113/rajaspachipulusu/nfvsystem_2.2.git
+   27  git push -u origin master
+   28  git add .
+   29  git status
+   30  git commit -m 'sample commit'
+   31  git push -u origin master

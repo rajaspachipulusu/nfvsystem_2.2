@@ -1,0 +1,61 @@
+ 52  fdisk /dev/sdb
+   53  pvcreate /dev/sdb1
+   54  pvs
+   55  vgcreate vgdata /dev/sdb1
+   56  lvcreate -L 20480 -n datalv vgdata
+   57  vgs
+   58  lvs
+   59  lvcreate -L 20480 -n imagelv vgdata
+   60  lvcreate -L 19999 -n imagelv vgdata
+   61  lvs
+   62  df -h
+   63  vi /etc/fstab
+   64  lvs
+   65  mkfx.ext4 /dev/vgdata/datalv
+   66  mkfs.ext4 /dev/vgdata/datalv
+   67  mkfs.ext4 /dev/vgdata/imagelv
+   68  mount -a
+   69  vi /etc/fstab
+   70  mount -a
+   71  mkdir /data
+   72  mkdir /image
+   73  mount -a
+   74  df -h
+   75  vi /etc/fstab
+   76  mount -a
+   77  mkdir /image
+   78  df -h
+   79  ll /image
+   80  vi /etc/fstab
+   81  mount -a
+   82  df -h
+   83  vi /etc/fstab
+   84  lvremove /dev/vgdata/datalv
+   85  umount /data
+   86  umount /image
+
+
+
+
+   87  lvremove /dev/vgdata/datalv
+   88  lvremove /dev/vgdata/imagelv
+   89  vgremove vgdata
+   90  pvremove /dev/sdb1
+
+
+
+
+
+cat /etc/fstab
+proc                    /proc                   proc    defaults        0 0
+/dev/vgdata/datalv      /data  ext4 defaults 1 1 //vgdata is ur volume name and datalv is volume created in vgdata as partition
+/dev/vgdata/imagelv     /image ext4 defaults 1 1 //vgdata is ur volume name and imagelv is volume created in vgdata as partition
+
+
+
+
+rpm -ivh deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm
+ rpm -ivh python-deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm
+ rpm -ivh createrepo-0.9.9-17.el6.noarch.rpm
+~
+

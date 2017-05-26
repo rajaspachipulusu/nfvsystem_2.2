@@ -1,0 +1,32 @@
+def ak_json_create(ak_cmd,switch_json_list,json_dump_dir,switchNum,dns,csv_value_fields,host_name,ak_host_name,addon_kit_csv,ak_json_list):
+    """Creating Json for Addon kit"""
+    if os.path.isfile(sw1_json_two and sw1_json_two):
+        for json_file in switch_json_list:
+            with open(json_file,'r') as json_one:
+                js_data = json.load(json_one)
+                print (switchNum+dns+'hostname_'+str(switch_json_list.index(json_file)+1))
+
+                if (js_data[switchNum+dns+'hostname_'+str(switch_json_list.index(json_file)+1)] == host_name):
+                    ak_csv = open(csv_path+addon_kit_csv)
+                    reader = csv.DictReader(ak_csv)
+                    for row in reader:
+                        if (switchNum+row['Required Field'].lower()+'_'+str(switch_json_list.index(json_file)+1)) in js_data:
+                            js_data[switchNum+row['Required Field'].lower()+'_'+str(switch_json_list.index(json_file)+1)] = row[csv_value_fields[switch_json_list.index(json_file)]]
+                        elif (switchNum+row['Required Field']+'_'+str(switch_json_list.index(json_file)+1)) in js_data:
+                            js_data[switchNum+row['Required Field']+'_'+str(switch_json_list.index(json_file)+1)] = row[csv_value_fields[switch_json_list.index(json_file)]]
+                        else:
+                            print("Required Field does not matched with Json keys please check once "+switchNum+row['Required Field'].lower())
+                else:
+                    print("Enclosure hostname and Addonkit hos names are not same type, please check.")
+                    sys.exit()
+            with open(CPLM_addon_path+"/"+json_dump_dir+"/"+"component_initial_config"+"/"+ak_json_list[switch_json_list.index(json_file)],'w') as json_one:
+                json_one.write(json.dumps(js_data,indent=4))
+            with open(CPLM_addon_path+"/"+json_dump_dir+"/"+"component_initial_config"+"/"+ak_json_list[switch_json_list.index(json_file)],'r') as json_one:
+                js_data = json.load(json_one)
+                if (js_data[switchNum+dns+'hostname_'+str(switch_json_list.index(json_file)+1)] != ak_host_name):
+                    print(js_data[switchNum+dns+'hostname_'+str(switch_json_list.index(json_file)+1)],"Switch hostname is not correct, please check it once")
+                else:
+                    print("json created for "+ak_cmd[0:4].upper()+" for Switch "+ak_cmd[4:-1]+ak_cmd[-1]+" and dumped into "+json_dump_dir )
+    else:
+        print("Switch json files not available to create addon kit json's.")
+

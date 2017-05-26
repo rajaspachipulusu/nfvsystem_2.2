@@ -1,0 +1,7 @@
+========changeing the interface names===========
+
+/etc/default/grub
+
+GRUB_CMDLINE_LINUX= net.ifnames=0 biosdevname=0 //add at the end
+
+then grup2-mkconfig -o /boot/grub/grub.cfg

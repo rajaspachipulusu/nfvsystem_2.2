@@ -1,0 +1,14 @@
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+nfvadmin ALL=NOPASSWD:ALL        -------> creates passwordless autentication for other user
+
+-----------------------------------------------------------------------------------------------------------
+
+to find linux distribution name and version
+
+cat /proc/version
+uname -mrs
+umane -a
+
+-----------------------------------------------------------------------------------------------------------
+

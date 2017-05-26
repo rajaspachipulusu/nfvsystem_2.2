@@ -1,0 +1,8 @@
+libguestfs-tools
+
+guestfish --rw -a /data1/opensaf/nfv.qcow2 -i
+
+/dev/centos_lidm_test/root
+
+run
+list file-systems

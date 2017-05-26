@@ -1,0 +1,11 @@
+ - name: Read JSON variables
+       local_action: shell cat /tmp/seedvm.json
+       register: vsa1
+
+
+ - shell: ping -c3 {{ (vsa1.stdout | from_json).kvm_password }} 
+   register: pingstatus
+
+ - fail: msg="The CMC IP is already in use. Please change ip..EXITING"
+   when: pingstatus.stdout.find("3 received") > -1
+ 

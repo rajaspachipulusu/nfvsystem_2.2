@@ -1,0 +1,1 @@
+qemu-img create -f qcow2 NFV-CMCVM-001.qcow2 50G

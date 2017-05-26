@@ -1,0 +1,69 @@
+Installing Gerrit server on ubuntu
+
+1. apt update
+2. apt-get install git [will install git]
+3. apt-get install default-jdk
+4. wget https://gerrit.googlecode.com/files/gerrit-2.7-rc1.war   if this is not available then download from outside and do it [https://www.gerritcodereview.com/download/gerrit-2.7.war]
+5. java -jar <gerrit war file> init --batch -d ~/gerrit_example
+6. git config -f ~/gerrit_example/etc/gerrit.config gerrit.canonicalWebUrl
+7. By default we will have open id installed so we want to change the configuration in /root/gerrit_examples/etc/gerrit.config
+8. config is here
+
+ [gerrit]
+        basePath = git
+        canonicalWebUrl = http://localhost:8080/
+[database]
+        type = mysql
+        hostname = localhost
+        database = gerritreviewdb
+        username = gerrit2
+[index]
+        type = LUCENE
+[auth]
+        type = LDAP
+[ldap]
+        server = ldap://asiapacific.cpqcorp.net
+        username = CN=rajas.p.r@hpe.com,OU=IN,OU=USERS,OU=Accounts,DC=asiapacific,DC=cpqcorp,DC=net
+        accountBase = DC=asiapacific,DC=cpqcorp,DC=net
+        groupBase = DC=asiapacific,DC=cpqcorp,DC=net
+[sendemail]
+        smtpServer = smtp3.hp.com
+        smtpServerPort = 25
+        smtpUser = gerritreview@hpe.com
+[container]
+        user = gerrit
+        javaHome = /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.131-2.b11.el7_3.x86_64/jre
+[sshd]
+        listenAddress = *:29418
+[httpd]
+        listenUrl = http://*:8080/
+[cache]
+        directory = cache
+[gitweb]
+        type = custom
+        url = plugins/gitblit/
+        project = summary/?r=${project}
+        revision = commit/?r=${project}&h=${commit}
+        branch = log/?r=${project}&h=${branch}
+        filehistory = history/?f=${file}&r=${project}&h=${branch}
+        file = blob/?r=${project}&h=${commit}&f=${file}
+        roottree = tree/?r=${project}&h=${commit}
+        linkname = Browse
+[plugins]
+        allowRemoteAdmin = true
+
+9. set java variable correctly the above one is an example.
+
+10. install mysql-server apt install mysql-server
+11. append the below values security configurations in /root/gerrit_examples/etc/security.config
+
+[database]
+        password = <password given while installing mysql>@mysql
+[ldap]
+        password = <NT Password>
+[auth]
+        registerEmailPrivateKey = 1xduNPXG07T7Eh0Kv+MaCe0k8FOv/gshFZk=
+        restTokenPrivateKey = eeoVgvngBGDLJYz8lfmnQSI/wSXvEFxqIbA=
+[sendemail]
+        smtpPass = HP1nvent
+
